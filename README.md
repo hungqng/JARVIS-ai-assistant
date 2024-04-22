@@ -85,3 +85,6 @@ Listening...
 <p align="center">
   <img src="media/good_morning.png" alt="Saying good morning" width="80%"/>
 </p>
+
+## Credit
+<a href="https://github.com/AlexandreSajus/JARVIS" target="_blank">AlexandreSajus</a>
