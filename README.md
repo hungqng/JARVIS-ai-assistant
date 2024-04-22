@@ -1,6 +1,6 @@
 # JARVIS
 
-Just A Rather Very Intelligent System, J.A.R.V.I.S. Tony Stark's artificial intelligence assistant: Voice to Text to LLM to Speech, displayed in a web interface.
+Just A Rather Very Intelligent System, J.A.R.V.I.S. Tony Stark's artificial intelligence assistant: Speech To Text to LLM to Text To Speech, displayed in a web interface.
 
 ## How it works
 
