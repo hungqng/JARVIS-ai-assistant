@@ -14,7 +14,9 @@ Just A Rather Very Intelligent System, J.A.R.V.I.S. Tony Stark's artificial inte
 ## Requirements
 
 **Python 3.8 - 3.11**
+
 **Deepgram SDK 3.2.6**
+
 **OpenAI 1.10**
 
 Make sure you have the following API keys:
