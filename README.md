@@ -66,13 +66,13 @@ Here is an example:
 ```
 Listening...
 Done listening
-Finished transcribing in 1.21 seconds.
-Finished generating response in 0.72 seconds.
-Finished generating audio in 1.85 seconds.
+Finished transcribing in 0.28 seconds.
+Finished generating a response in 0.85 seconds.
+Finished generating audio in 0.23 seconds.
 Speaking...
 
- --- USER: good morning jarvis
- --- JARVIS: Good morning, Alex! How can I assist you today?
+ --- USER: Hello, Jarvis.
+ --- JARVIS: Hello, Mr. Stark. How can I assist you today?
 
 Listening...
 ...
