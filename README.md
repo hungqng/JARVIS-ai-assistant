@@ -15,6 +15,8 @@ Just A Rather Very Intelligent System, J.A.R.V.I.S. Tony Stark's artificial inte
 
 **Python 3.8 - 3.11**
 
+**Pip (tested on v24.0)**
+
 **Deepgram SDK 3.2.6**
 
 **OpenAI 1.10**
