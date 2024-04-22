@@ -18,7 +18,7 @@ def speech_to_text() -> None:
     """
     recorder = WebRtcVadRecorder(
         vad_mode=3,
-        silence_seconds=4,
+        silence_seconds=2,
     )
     recorder.start()
     # file directory

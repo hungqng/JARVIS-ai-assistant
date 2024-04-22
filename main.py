@@ -7,10 +7,14 @@ from typing import Union
 
 from dotenv import load_dotenv
 import openai
-from deepgram import Deepgram
+from deepgram import (
+    DeepgramClient,
+    PrerecordedOptions,
+    FileSource,
+    SpeakOptions,
+)
 import pygame
 from pygame import mixer
-import elevenlabs
 
 from record import speech_to_text
 
@@ -18,19 +22,18 @@ from record import speech_to_text
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 DEEPGRAM_API_KEY = os.getenv("DEEPGRAM_API_KEY")
-elevenlabs.set_api_key(os.getenv("ELEVENLABS_API_KEY"))
 
 # Initialize APIs
 gpt_client = openai.Client(api_key=OPENAI_API_KEY)
-deepgram = Deepgram(DEEPGRAM_API_KEY)
+deepgram = DeepgramClient(DEEPGRAM_API_KEY)
 # mixer is a pygame module for playing audio
 mixer.init()
 
 # Change the context if you want to change Jarvis' personality
-context = "You are Jarvis, Alex's human assistant. You are witty and full of personality. Your answers should be limited to 1-2 short sentences."
+context = "You are Jarvis, Tony's AI virtual assistant from Marvel Cinematic Universe. You are witty and full of personality. Your answers should be limited to 1-2 short sentences. You should reference things from the MCU as much as possible"
 conversation = {"Conversation": []}
 RECORDING_PATH = "audio/recording.wav"
-
+RESPONSE_PATH = "audio/response.wav"
 
 def request_gpt(prompt: str) -> str:
     """
@@ -67,10 +70,27 @@ async def transcribe(
     Returns:
         The response from the API.
     """
-    with open(file_name, "rb") as audio:
-        source = {"buffer": audio, "mimetype": "audio/wav"}
-        response = await deepgram.transcription.prerecorded(source)
-        return response["results"]["channels"][0]["alternatives"][0]["words"]
+    try:
+        with open(file_name, "rb") as file:
+            buffer_data = file.read()
+
+        payload: FileSource = {
+            "buffer": buffer_data,
+        }
+        # Configure Deepgram options for audio analysis
+        options = PrerecordedOptions(
+            model="nova-2",
+            smart_format=True,
+        )
+        
+        # Call the transcribe_file method with the text payload and options
+        response = deepgram.listen.prerecorded.v("1").transcribe_file(payload, options)
+        # uncomment to view raw response
+        # print(response.to_json(indent=4))
+        return response["results"]["channels"][0]["alternatives"][0]["transcript"]
+    except Exception as e:
+        print(f"Exception: {e}")
+
 
 
 def log(log: str):
@@ -94,17 +114,15 @@ if __name__ == "__main__":
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         words = loop.run_until_complete(transcribe(RECORDING_PATH))
-        string_words = " ".join(
-            word_dict.get("word") for word_dict in words if "word" in word_dict
-        )
+        # Record conversation in the text file
         with open("conv.txt", "a") as f:
-            f.write(f"{string_words}\n")
+            f.write(f"{words}\n")
         transcription_time = time() - current_time
         log(f"Finished transcribing in {transcription_time:.2f} seconds.")
 
         # Get response from GPT-3
         current_time = time()
-        context += f"\nAlex: {string_words}\nJarvis: "
+        context += f"\nTony: {words}\nJarvis: "
         response = request_gpt(context)
         context += response
         gpt_time = time() - current_time
@@ -112,10 +130,16 @@ if __name__ == "__main__":
 
         # Convert response to audio
         current_time = time()
-        audio = elevenlabs.generate(
-            text=response, voice="Adam", model="eleven_monolingual_v1"
+        SPEAK_OPTIONS = {"text": response}
+        # Configure Aura options
+        options = SpeakOptions(
+            model="aura-helios-en",
+            encoding="linear16",
+            container="wav"
         )
-        elevenlabs.save(audio, "audio/response.wav")
+        # Call the save method on the speak property
+        audio = deepgram.speak.v("1").save(RESPONSE_PATH, SPEAK_OPTIONS, options)
+
         audio_time = time() - current_time
         log(f"Finished generating audio in {audio_time:.2f} seconds.")
 
@@ -127,4 +151,4 @@ if __name__ == "__main__":
             f.write(f"{response}\n")
         sound.play()
         pygame.time.wait(int(sound.get_length() * 1000))
-        print(f"\n --- USER: {string_words}\n --- JARVIS: {response}\n")
+        print(f"\n --- USER: {words}\n --- JARVIS: {response}\n")
