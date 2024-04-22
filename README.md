@@ -1,9 +1,5 @@
 # JARVIS
 
-<p align="center">
-  <img src="media/cqb_conv.png" alt="JARVIS helping me choose a firearm" width="100%"/>
-</p>
-
 Just A Rather Very Intelligent System, J.A.R.V.I.S. Tony Stark's artificial intelligence assistant: Voice to Text to LLM to Speech, displayed in a web interface.
 
 ## How it works
@@ -82,9 +78,6 @@ Listening...
 ...
 ```
 
-<p align="center">
-  <img src="media/good_morning.png" alt="Saying good morning" width="80%"/>
-</p>
 
 ## Credit
 <a href="https://github.com/AlexandreSajus/JARVIS" target="_blank">AlexandreSajus</a>
