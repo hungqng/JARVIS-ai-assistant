@@ -4,24 +4,16 @@
   <img src="media/cqb_conv.png" alt="JARVIS helping me choose a firearm" width="100%"/>
 </p>
 
-Your own voice personal assistant: Voice to Text to LLM to Speech, displayed in a web interface.
+Just a Rather Very Intelligent System, JARVIS. Tony's personal AI assistant: Voice to Text to LLM to Speech, displayed in a web interface.
 
 ## How it works
 
 1. :microphone: The user speaks into the microphone
-2. :keyboard: Voice is converted to text using <a href="https://deepgram.com/" target="_blank">Deepgram</a>
+2. :keyboard: Voice is converted to text using <a href="[https://deepgram.com/](https://deepgram.com/product/speech-to-text)" target="_blank">Deepgram</a>
 3. :robot: Text is sent to <a href="https://openai.com/" target="_blank">OpenAI</a>'s GPT-3 API to generate a response
-4. :loudspeaker: Response is converted to speech using <a href="https://elevenlabs.io/" target="_blank">ElevenLabs</a>
+4. :loudspeaker: Response is converted to speech using <a href="[https://elevenlabs.io/](https://deepgram.com/product/text-to-speech)" target="_blank">Deepgram Aura</a>
 5. :loud_sound: Speech is played using <a href="https://www.pygame.org/wiki/GettingStarted" target="_blank">Pygame</a>
 6. :computer: Conversation is displayed in a webpage using <a href="https://github.com/Avaiga/taipy" target="_blank">Taipy</a>
-
-## Video Demo
-
-<p align="center">
-  <a href="https://youtu.be/aIg4-eL9ATc" target="_blank">
-    <img src="media/git_thumb.png" alt="Youtube Devlog" width="50%"/>
-  </a>
-</p>
 
 ## Requirements
 
@@ -30,14 +22,13 @@ Your own voice personal assistant: Voice to Text to LLM to Speech, displayed in 
 Make sure you have the following API keys:
 - <a href="https://developers.deepgram.com/docs/authenticating" target="_blank">Deepgram</a>
 - <a href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI</a>
-- <a href="https://elevenlabs.io/docs/api-reference/text-to-speech" target="_blank">Elevenlabs</a>
 
 ## How to install
 
 1. Clone the repository
 
 ```bash
-git clone https://github.com/AlexandreSajus/JARVIS.git
+git clone https://github.com/hungqng/JARVIS-voice-virtual-assistant.git
 ```
 
 2. Install the requirements
@@ -51,7 +42,6 @@ pip install -r requirements.txt
 ```bash
 DEEPGRAM_API_KEY=XXX...XXX
 OPENAI_API_KEY=sk-XXX...XXX
-ELEVENLABS_API_KEY=XXX...XXX
 ```
 
 ## How to use
@@ -62,7 +52,7 @@ ELEVENLABS_API_KEY=XXX...XXX
 python display.py
 ```
 
-2. In another terminal, run `jarvis.py` to start the voice assistant
+2. In another terminal, run `main.py` to start the voice assistant
 
 ```bash
 python main.py
