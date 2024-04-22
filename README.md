@@ -9,9 +9,9 @@ Just A Rather Very Intelligent System, J.A.R.V.I.S. Tony Stark's artificial inte
 ## How it works
 
 1. :microphone: The user speaks into the microphone
-2. :keyboard: Voice is converted to text using <a href="[https://deepgram.com/](https://deepgram.com/product/speech-to-text)" target="_blank">Deepgram</a>
+2. :keyboard: Voice is converted to text using <a href="https://deepgram.com/product/speech-to-text" target="_blank">Deepgram Nova</a>
 3. :robot: Text is sent to <a href="https://openai.com/" target="_blank">OpenAI</a>'s GPT-3 API to generate a response
-4. :loudspeaker: Response is converted to speech using <a href="[https://elevenlabs.io/](https://deepgram.com/product/text-to-speech)" target="_blank">Deepgram Aura</a>
+4. :loudspeaker: Response is converted to speech using <a href="https://deepgram.com/product/text-to-speech" target="_blank">Deepgram Aura</a>
 5. :loud_sound: Speech is played using <a href="https://www.pygame.org/wiki/GettingStarted" target="_blank">Pygame</a>
 6. :computer: Conversation is displayed in a webpage using <a href="https://github.com/Avaiga/taipy" target="_blank">Taipy</a>
 
