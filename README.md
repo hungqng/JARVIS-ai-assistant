@@ -4,7 +4,7 @@
   <img src="media/cqb_conv.png" alt="JARVIS helping me choose a firearm" width="100%"/>
 </p>
 
-Just a Rather Very Intelligent System, JARVIS. Tony's personal AI assistant: Voice to Text to LLM to Speech, displayed in a web interface.
+Just A Rather Very Intelligent System, JARVIS. Tony's personal AI assistant: Voice to Text to LLM to Speech, displayed in a web interface.
 
 ## How it works
 
