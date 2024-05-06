@@ -13,7 +13,7 @@ Just A Rather Very Intelligent System, J.A.R.V.I.S. Tony Stark's artificial inte
 
 ## Requirements
 
-**Python 3.8 - 3.11**
+**Python 3.11**
 
 **Pip (tested on v24.0)**
 
